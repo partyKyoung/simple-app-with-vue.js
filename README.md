@@ -1,30 +1,10 @@
-# vue.js
+# SimpleReceipt
+vue.js 맛보기용으로 만든 web application. 
+컨셉은 카카오톡 고독한 김생민 방에서 따옴. 
 
-> A Vue.js project
+## front-end
+- vue.js
+- bootstrap
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## back-end
+- firebase

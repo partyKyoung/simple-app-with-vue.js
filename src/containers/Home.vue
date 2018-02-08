@@ -1,15 +1,12 @@
 <template>
-  <div class="hello">
+  <div class="home">
     <h1>고독한 김생민 In Web</h1>
     <h2>돈은 안쓰는 것이다.</h2>
     <div>
       <button>입력하기</button>
     </div>
-    <ul v-for="item of list" :key="item.key">
-      <li>
-        {{item.target}}
-        가격: {{item.price}}원
-      </li>
+    <ul class="receipt-list clearfix p-0">
+
     </ul>
   </div>
 </template>
@@ -32,4 +29,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .receipt-list {
+    width: 100%;
+  }
+
+  .receipt-item {
+    width: 25%;
+  }
 </style>
