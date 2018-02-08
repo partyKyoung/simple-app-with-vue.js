@@ -6,17 +6,25 @@
       <button>입력하기</button>
     </div>
     <ul class="receipt-list clearfix p-0">
-
+      <receipt-thumbnail 
+        v-for="receipt of receiptList" 
+        :key="receipt.key" 
+        :receipt="receipt"
+      >
+      </receipt-thumbnail>
     </ul>
   </div>
 </template>
 
 <script>
+import ReceiptThumbnail from '../components/Home/ReceiptThumbnail.vue'
+
 export default {
+  components: {ReceiptThumbnail},
   name: 'home',
   data () {
     return {
-      list: [
+      receiptList: [
         {key: 1, target: '옹아리 인형', status: 'great', price: 30000}, 
         {key: 2, target: '서피스 4', status: 'great', price: 1560000}, 
         {key: 3, target: '배고프당', status: 'great', price: 100}, 
@@ -31,9 +39,5 @@ export default {
 <style scoped>
   .receipt-list {
     width: 100%;
-  }
-
-  .receipt-item {
-    width: 25%;
   }
 </style>
