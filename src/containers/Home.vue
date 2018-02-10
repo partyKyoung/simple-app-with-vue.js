@@ -3,7 +3,7 @@
     <h1>고독한 김생민 In Web</h1>
     <h2>돈은 안쓰는 것이다.</h2>
     <div>
-      <button>입력하기</button>
+      <router-link to="createReceipt">입력하기</router-link>
     </div>
     <ul class="receipt-list clearfix p-0">
       <receipt-thumbnail 
