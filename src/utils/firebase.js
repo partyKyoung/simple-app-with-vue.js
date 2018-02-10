@@ -2,7 +2,15 @@ function getDatabase () {
   return firebase.database();
 }
 
-export function writeFirebase (spendingDetail, price, description) {
+export function getReceipts () {
+  return firebase.database().ref('/receipts').once('value').then(function(snapshot) {
+    snapshot.forEach( function(test) {
+      console.log(test.val());
+    });
+  });
+}
+
+export function writeReceipt (spendingDetail, price, description) {
   const target = getDatabase();
   const postData = {
     spendingDetail: spendingDetail, 
@@ -15,5 +23,5 @@ export function writeFirebase (spendingDetail, price, description) {
   const updates = {};
   updates['/receipts/' + key] = postData;
 
-  firebase.database().ref().update(updates);
+  return target.ref().update(updates);
 }

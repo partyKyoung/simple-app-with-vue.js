@@ -18,9 +18,13 @@
 
 <script>
 import ReceiptThumbnail from '../components/Home/ReceiptThumbnail.vue'
+import {getReceipts} from '../utils/firebase'
 
 export default {
   components: {ReceiptThumbnail},
+  created: function () {
+    getReceipts();
+  },
   name: 'home',
   data () {
     return {

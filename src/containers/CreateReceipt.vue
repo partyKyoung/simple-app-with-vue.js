@@ -38,11 +38,10 @@
 </template>
 
 <script>
-import { writeFirebase } from '../utils/firebase'
-
+import {writeFirebase} from '../utils/firebase'
 
 export default {
-  methods: { writeFirebase },
+  methods: {writeFirebase},
   name: 'create-receipt'
 }
 </script>
