@@ -20,7 +20,7 @@
             placeholder="금액"
             type="text"
           />
-          <div class="invalid-feedback text-danger" >오류 텍스트</div>
+          <div class="invalid-feedback text-danger">오류 텍스트</div>
         </div>  
       </div>
        <div class="form-group row">
@@ -33,19 +33,20 @@
         </div>  
       </div>           
     </form>
-    <button>영수증 제출</button>
+    <button v-on:click="writeFirebase('hi', 10000, 'test')">영수증 제출</button>
   </div>
 </template>
 
 <script>
-function checkValid (value) {
-  return !value ? '필수 항목 입니다.' : '';
-}
+import { writeFirebase } from '../utils/firebase'
+
 
 export default {
+  methods: { writeFirebase },
   name: 'create-receipt'
 }
 </script>
 
 <style scoped>
+.div { color: #FFF }
 </style>
