@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div>
+    <div class="mt-1 mb-3">
       <router-link to="createReceipt">입력하기</router-link>
     </div>
     <ul class="receipt-list clearfix row p-0 m-0">
