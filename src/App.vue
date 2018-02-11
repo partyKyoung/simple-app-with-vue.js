@@ -1,13 +1,17 @@
 <template>
-  <div id="app" class="pt-3">
-    <section class="container">
+  <div id="app">
+    <receipt-header></receipt-header>
+    <section class="container pt-3">
       <router-view/>
     </section>
   </div>
 </template>
 
 <script>
+import Header from './components/layout/Header.vue'
+
 export default {
+  components: {'receipt-header': Header},
   name: 'App'
 }
 </script>
@@ -29,7 +33,7 @@ export default {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
+    font-size: 16px;
     font: inherit;
     vertical-align: baseline;
   }
@@ -41,6 +45,7 @@ export default {
 
   body {
     line-height: 1;
+    background-color: #f9f9fb;
   }
 
   ol, ul {

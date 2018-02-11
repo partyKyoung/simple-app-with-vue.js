@@ -1,0 +1,9 @@
+diff a/build/webpack.base.conf.js b/build/webpack.base.conf.js	(rejected hunks)
+@@ -14,7 +14,6 @@
+   enforce: 'pre',
+   include: [resolve('src'), resolve('test')],
+   options: {
+-    formatter: require('eslint-friendly-formatter'),
+     emitWarning: !config.dev.showEslintErrorsInOverlay
+   }
+ })

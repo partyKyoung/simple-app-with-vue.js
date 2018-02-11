@@ -3,9 +3,11 @@ function getDatabase () {
 }
 
 export function getReceipts () {
-  return firebase.database().ref('/receipts').once('value').then(function(snapshot) {
-    snapshot.forEach( function(test) {
-      console.log(test.val());
+  return new Promise((resolve, reject) => {
+    firebase.database().ref('/receipts').once('value').then((snapshot) => {
+      resolve(snapshot);
+    }).catch((err) => {
+      reject(err);
     });
   });
 }
@@ -15,7 +17,9 @@ export function writeReceipt (spendingDetail, price, description) {
   const postData = {
     spendingDetail: spendingDetail, 
     price: price,
-    description: description
+    description: description,
+    great: 0,
+    stupit: 0
   };
 
   // 입력할 데이터의 key를 얻는다. 

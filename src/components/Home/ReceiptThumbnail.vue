@@ -1,7 +1,9 @@
 <template>
-  <li class="receipt-item float-left">
-    <p>{{receipt.target}}</p>
-    <p>가격: {{receipt.price}}원</p>
+  <li class="receipt-item col-12 col-md-4 mb-3 rounded">
+    <div class="receipt-item-content text-left p-3">
+      <p class="mb-3"><span class="d-inline-block font-weight-bold receipt-item-title">지출 내역</span>{{receipt.spendingDetail}}</p>
+      <p><span class="d-inline-block font-weight-bold receipt-item-title">가격</span>{{receipt.price}}원</p>
+    </div>
   </li>
 </template>
 
@@ -13,7 +15,18 @@ export default {
 </script>
 
 <style scoped>
-  .receipt-item {
-    width: 25%;
+  .receipt-item-content {
+    border: 1px solid #dee2e6;
+    background-color: #FFF;
+    height: 80px;
+    padding-right: 16px;
+  }
+
+  .receipt-item:nth-last-of-type {
+    padding: 0
+  }
+
+  .receipt-item-title {
+    width: 100px;
   }
 </style>
