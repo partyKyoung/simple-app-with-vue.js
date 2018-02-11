@@ -3,8 +3,10 @@ function getDatabase () {
 }
 
 export function getReceipts () {
+  const target = getDatabase();
+
   return new Promise((resolve, reject) => {
-    firebase.database().ref('/receipts').once('value').then((snapshot) => {
+    target.ref('/receipts').once('value').then((snapshot) => {
       resolve(snapshot);
     }).catch((err) => {
       reject(err);
@@ -27,5 +29,11 @@ export function writeReceipt (spendingDetail, price, description) {
   const updates = {};
   updates['/receipts/' + key] = postData;
 
-  return target.ref().update(updates);
+  return new Promise((resolve, reject) => {
+    target.ref().update(updates).then(() => {
+      resolve(key);
+    }).catch((err) =>  {
+      reject(err);
+    })
+  })
 }

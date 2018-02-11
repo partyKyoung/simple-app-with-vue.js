@@ -25,7 +25,12 @@ export default {
   created () { //컴포넌트는 생성됐으나 템플릿과 가상돔은 마운트 및 랜더링 되지 않은 상태.
     getReceipts().then((data) => {
       data.forEach((item) => {
-        receiptList.push(item.val());
+        let receipt = item.val();
+
+        receipt.key = item.key;
+
+console.log(receipt);
+        receiptList.push(receipt);
       });
     }).catch((err) => {
       console.error(err);

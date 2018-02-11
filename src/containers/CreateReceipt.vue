@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form id="receiptForm" v-on:submit.prevent="sendPost" class="col-xl-6 col-lg-8 mx-auto">
+    <form id="receiptForm" class="col-xl-6 col-lg-8 mx-auto">
       <div class="form-group row">
         <label class="col-3 col-form-label text-md-right pl-0 pr-0 pr-md-4">지출 내역</label>
         <div class="col-6 px-0 pl-1 p-md-0">
@@ -29,14 +29,14 @@
         <label class="col-3 col-form-label text-md-right pl-0 pr-0 pr-md-4">설명</label>
         <div class="col-6 px-0 pl-1 p-md-0">
           <textarea 
-            class='form-control'
+            class="form-control"
             v-model="description"
           />
           <div class="invalid-feedback text-danger">오류 텍스트</div>
         </div>  
       </div>           
     </form>
-    <button type="submit">영수증 제출</button>
+    <button type="button" @click="sendPost()">영수증 제출</button>
   </div>
 </template>
 
@@ -45,14 +45,19 @@ import {writeReceipt} from '../utils/firebase'
 
 export default {
   methods: {
-    sendPost: () => {
+    sendPost () {
       const spendingDetail = this.spendingDetail;
       const price = this.price;
       const description = this.description;
 
-      console.log(spendingDetail);
+      writeReceipt(spendingDetail, price, description).then((key) => {
+        console.log(key);
+        
+      }).catch((err) =>{
+        alert('등록에 실패하였습니다. 잠시 후 다시 시도해주세요.');
 
-     writeReceipt(spendingDetail, price, description);
+        console.error(err)
+      });
     }
   },
   data () {
