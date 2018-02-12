@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <div>
-      <h3>영수증</h3>
-      <h4>지출 내역</h4>
+  <div className="receipt">
+    <div className="md-3">
+      <h3 className="text-center">영수증</h3>
+      <h4 className="text-left">지출 내역</h4>
       <div>{{receipt.spendingDetail}}</div>
-      <h4>금액</h4>
+      <h4 className="text-left">금액</h4>
       <div></div>
-      <h4>설명</h4>
+      <h4 className="text-left">설명</h4>
       <div></div>
     </div>
     <div>
@@ -28,8 +28,7 @@
 
   export default {
     name: 'receipt',
-    beforeCreate () {
-      console.log('dd');
+    created () {
       getReceipt(this.$route.params.id).then((data) => {
         this.receipt = data.val();
       }).catch((err) => {
@@ -47,6 +46,10 @@
   }
 </script>
 
-<style scoped>
-
+<style scoped lang='sass'>
+.receipt {
+  @media screen and (min-width: 768px) {
+    background-color: #ddd;
+  }
+}
 </style>
