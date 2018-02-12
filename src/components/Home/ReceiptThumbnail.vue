@@ -14,7 +14,6 @@ export default {
 
   methods: {
     moveReceipt (key) {
-      console.log(key);
       this.$router.push({ path: `receipt/${key}`})
     }
   }

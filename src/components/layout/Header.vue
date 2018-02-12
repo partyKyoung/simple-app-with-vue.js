@@ -1,6 +1,8 @@
 <template>
   <header class="header">
-    <h1>고독한 김생민 in WEB</h1>
+    <router-link to="/">
+      <h1>고독한 김생민 in WEB</h1>
+    </router-link>
   </header>
 </template>
 

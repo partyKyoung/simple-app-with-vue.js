@@ -2,7 +2,7 @@ function getDatabase () {
   return firebase.database();
 }
 
-export function getReceipts (key) {
+export function getReceipts () {
   const target = getDatabase();
 
   return new Promise((resolve, reject) => {
@@ -14,12 +14,11 @@ export function getReceipts (key) {
   });
 }
 
-
-export function getReceipt () {
+export function getReceipt (key) {
   const target = getDatabase();
 
   return new Promise((resolve, reject) => {
-    target.ref('/receipts/' + key).on('value').then((snapshot) => {
+    target.ref('/receipts').child(key).once('value').then((snapshot) => {
       resolve(snapshot);
     }).catch((err) => {
       reject(err);
