@@ -2,11 +2,24 @@ function getDatabase () {
   return firebase.database();
 }
 
-export function getReceipts () {
+export function getReceipts (key) {
   const target = getDatabase();
 
   return new Promise((resolve, reject) => {
     target.ref('/receipts').once('value').then((snapshot) => {
+      resolve(snapshot);
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
+
+
+export function getReceipt () {
+  const target = getDatabase();
+
+  return new Promise((resolve, reject) => {
+    target.ref('/receipts/' + key).on('value').then((snapshot) => {
       resolve(snapshot);
     }).catch((err) => {
       reject(err);

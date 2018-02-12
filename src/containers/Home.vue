@@ -29,7 +29,6 @@ export default {
 
         receipt.key = item.key;
 
-console.log(receipt);
         receiptList.push(receipt);
       });
     }).catch((err) => {

@@ -25,7 +25,9 @@
 
 <script>
   export default {
-    
+    name: 'receipt',
+    created () {},
+    data () {}
   }
 </script>
 

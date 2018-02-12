@@ -51,8 +51,10 @@ export default {
       const description = this.description;
 
       writeReceipt(spendingDetail, price, description).then((key) => {
-        console.log(key);
-        
+        alert('등록되었습니다.');
+
+        router.push({ name: 'receipt', params: { id: key }})
+
       }).catch((err) =>{
         alert('등록에 실패하였습니다. 잠시 후 다시 시도해주세요.');
 
