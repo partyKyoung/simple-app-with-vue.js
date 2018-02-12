@@ -1,13 +1,13 @@
 <template>
-  <div className="receipt">
-    <div className="md-3">
-      <h3 className="text-center">영수증</h3>
-      <h4 className="text-left">지출 내역</h4>
-      <div>{{receipt.spendingDetail}}</div>
-      <h4 className="text-left">금액</h4>
-      <div></div>
-      <h4 className="text-left">설명</h4>
-      <div></div>
+  <div class="receipt">
+    <h3 class="text-center">영수증</h3>
+    <div class="row m-0 mt-3 mb-3">
+      <h4 class="col-12 col-md-3 mb-3">지출 내역</h4>
+      <div class="col-12 col-md-9 mb-3">{{receipt.spendingDetail}}</div>
+      <h4 class="col-12 col-md-3 mb-3">금액</h4>
+      <div class="col-12 col-md-9 mb-3">{{receipt.price}}</div>
+      <h4 class="col-12 col-md-3">설명</h4>
+      <div class="col-12 col-md-9">{{receipt.description}}</div>
     </div>
     <div>
       <button>평가 남기기</button>
@@ -46,10 +46,12 @@
   }
 </script>
 
-<style scoped lang='sass'>
+<style scoped lang='scss'>
 .receipt {
+  width: 100%;
+
   @media screen and (min-width: 768px) {
-    background-color: #ddd;
+    width: 75%;
   }
 }
 </style>
