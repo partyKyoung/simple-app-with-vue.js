@@ -11,9 +11,15 @@
     </div>
     <div>
       <button @click="toggleForm()">평가 남기기</button>
-      <receipt-form v-if="isShowForm"></receipt-form>
+      <receipt-form 
+        v-if="isShowForm"
+        :id="id"
+        :receipt="receipt"
+      ></receipt-form>
     </div>
-    <receipt-evaluation></receipt-evaluation>
+    <receipt-evaluation
+    :id="id"
+    ></receipt-evaluation>
   </div>
 </template>
 
@@ -33,6 +39,7 @@
     created () {
       getReceipt(this.$route.params.id).then((data) => {
         this.receipt = data.val();
+
       }).catch((err) => {
         console.error(err);
         alert('데이터를 불러오지 못하였습니다. 잠시후에 다시 시도해주세요.');
@@ -43,6 +50,7 @@
     data () {
       return {
         receipt: {},
+        id: this.$route.params.id,
         isShowForm: false
       }
     }

@@ -49,3 +49,36 @@ export function writeReceipt (spendingDetail, price, description) {
     })
   })
 }
+
+export function updateReceipt (id, status, evaluation) {
+  const target = getDatabase();
+  const postData = {
+    id: id,
+    status: status,
+    evaluation: evaluation
+  }
+
+  const key = target.ref().child('receiptsEvaluation').push().key;
+  const updates = {};
+  updates['/receiptsEvaluation/' + key] = postData;
+
+  return new Promise((resolve, reject) => {
+    target.ref().update(updates).then(() => {
+      resolve(key);
+    }).catch((err) =>  {
+      reject(err);
+    })
+  }) 
+}
+
+export function getReceiptEvaluation (key) {
+  const target = getDatabase();
+
+  return new Promise((resolve, reject) => {
+    target.ref('/receiptsEvaluation').orderByChild("id").equalTo(key).once("value").then((snapshot) => {
+      resolve(snapshot);
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
