@@ -10,11 +10,16 @@
       <div class="col-12 col-md-9">{{receipt.description}}</div>
     </div>
     <div>
-      <button>평가 남기기</button>
-      <div>
-        <input type="option" value="great" />
-        <input type="option" value="stupid" />
-        <textarea />
+      <button @click="toggleForm()">평가 남기기</button>
+      <div v-if="isShowForm">
+        <input type="radio" value="great" />
+        <label for="great">그뤠잇</label>
+        <input type="radio" value="stupid" />
+        <label for="stupid">스튜핏</label>
+        <div class="mt-3 mb-3">
+          <textarea />
+        </div>
+        
       </div>
     </div>
     <div>
@@ -28,6 +33,11 @@
 
   export default {
     name: 'receipt',
+    methods: {
+      toggleForm () {
+        this.isShowForm = !this.isShowForm
+      }
+    },
     created () {
       getReceipt(this.$route.params.id).then((data) => {
         this.receipt = data.val();
@@ -40,7 +50,8 @@
     },
     data () {
       return {
-        receipt: {}
+        receipt: {},
+        isShowForm: false
       }
     }
   }

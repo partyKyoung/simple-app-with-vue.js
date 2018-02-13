@@ -8,19 +8,19 @@
 </template>
 
 <script>
-export default {
-  name: 'receipt-thumbnail',
-  props: ['receipt'],
+  export default {
+    name: 'receipt-thumbnail',
+    props: ['receipt'],
 
-  methods: {
-    moveReceipt (key) {
-      this.$router.push({ path: `receipt/${key}`})
+    methods: {
+      moveReceipt (key) {
+        this.$router.push({ path: `receipt/${key}`})
+      }
     }
   }
-}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .receipt-item-content {
     border: 1px solid #dee2e6;
     background-color: #FFF;
@@ -28,8 +28,10 @@ export default {
     padding-right: 16px;
   }
 
-  .receipt-item:nth-last-of-type {
-    padding: 0
+  .receipt-item {
+    &:nth-last-of-type {
+      padding: 0
+    }
   }
 
   .receipt-item-title {
