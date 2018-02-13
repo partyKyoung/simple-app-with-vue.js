@@ -11,28 +11,20 @@
     </div>
     <div>
       <button @click="toggleForm()">평가 남기기</button>
-      <div v-if="isShowForm">
-        <input type="radio" value="great" />
-        <label for="great">그뤠잇</label>
-        <input type="radio" value="stupid" />
-        <label for="stupid">스튜핏</label>
-        <div class="mt-3 mb-3">
-          <textarea />
-        </div>
-        
-      </div>
+      <receipt-form v-if="isShowForm"></receipt-form>
     </div>
-    <div>
-      <h3>평가</h3>
-    </div>
+    <receipt-evaluation></receipt-evaluation>
   </div>
 </template>
 
 <script>
+  import ReceiptForm from '../components/receipt/ReceiptForm';
+  import ReceiptEvaluation from '../components/receipt/ReceiptEvaluation';
   import {getReceipt} from '../utils/firebase'
 
   export default {
     name: 'receipt',
+    components: {ReceiptForm, ReceiptEvaluation},
     methods: {
       toggleForm () {
         this.isShowForm = !this.isShowForm
