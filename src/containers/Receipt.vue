@@ -13,7 +13,7 @@
       <button @click="toggleForm()">평가 남기기</button>
       <receipt-form 
         v-if="isShowForm"
-        :key="key"
+        :id="id"
         :receipt="receipt"
       ></receipt-form>
     </div>
@@ -50,7 +50,7 @@
     data () {
       return {
         receipt: {},
-        key: this.$route.params.id,
+        id: this.$route.params.id,
         isShowForm: false
       }
     }

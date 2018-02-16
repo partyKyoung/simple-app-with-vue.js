@@ -14,11 +14,11 @@ export function getReceipts () {
   });
 }
 
-export function getReceipt (key) {
+export function getReceipt (id) {
   const target = getDatabase();
 
   return new Promise((resolve, reject) => {
-    target.ref('/receipts').child(key).once('value').then((snapshot) => {
+    target.ref('/receipts').child(id).once('value').then((snapshot) => {
       resolve(snapshot);
     }).catch((err) => {
       reject(err);
@@ -50,14 +50,14 @@ export function writeReceipt (spendingDetail, price, description) {
   })
 }
 
-export function updateReceipt (key, status, evaluation, receipt) {
+export function updateReceipt (id, status, evaluation, receipt) {
   const target = getDatabase();
 
   receipt[status] += 1;
 
   return new Promise((resolve, reject) => {
     target.ref().update(receipt).then(() => {
-      writeReceiptEvaluation (key, status, evaluation);
+      writeReceiptEvaluation (id, status, evaluation);
     }).catch((err) => {
       reject(err);
     });
@@ -66,10 +66,10 @@ export function updateReceipt (key, status, evaluation, receipt) {
 
 }
 
-export function writeReceiptEvaluation (key, status, evaluation) {
+export function writeReceiptEvaluation (id, status, evaluation) {
   const target = getDatabase();
   const postData = {
-    key: key,
+    id: id,
     status: status,
     evaluation: evaluation
   }
@@ -87,11 +87,11 @@ export function writeReceiptEvaluation (key, status, evaluation) {
   }) 
 }
 
-export function getReceiptEvaluation (key) {
+export function getReceiptEvaluation (id) {
   const target = getDatabase();
 
   return new Promise((resolve, reject) => {
-    target.ref('/receiptsEvaluation').orderByChild("key").equalTo(key).once("value").then((snapshot) => {
+    target.ref('/receiptsEvaluation').orderByChild("id").equalTo(id).once("value").then((snapshot) => {
       resolve(snapshot);
     }).catch((err) => {
       reject(err);

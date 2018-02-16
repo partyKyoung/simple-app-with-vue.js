@@ -16,14 +16,14 @@
   
   export default {
     name: 'receipt-form',
-    props: ["receipt", "key"],
+    props: ["receipt", "id"],
     methods: {
       sendPost () {
-        const key = this.key;
+        const id = this.id;
         const status = this.status;
         const evaluation = this.evaluation;
 
-        updateReceipt(key, status, evaluation, receipt);
+        updateReceipt(id, status, evaluation, receipt);
       }
     },
     data () {

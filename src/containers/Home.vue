@@ -25,7 +25,7 @@ export default {
       data.forEach((item) => {
         let receipt = item.val();
 
-        receipt.key = item.key;
+        receipt.id = item.key;
 
         this.receiptList.push(receipt);
       });
