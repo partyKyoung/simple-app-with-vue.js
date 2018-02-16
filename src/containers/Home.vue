@@ -6,7 +6,7 @@
     <ul class="receipt-list clearfix row p-0 m-0">
       <receipt-thumbnail 
         v-for="receipt of receiptList" 
-        :key="receipt.key" 
+        :key="receipt.id" 
         :receipt="receipt"
       >
       </receipt-thumbnail>

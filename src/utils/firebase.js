@@ -52,12 +52,14 @@ export function writeReceipt (spendingDetail, price, description) {
 
 export function updateReceipt (id, status, evaluation, receipt) {
   const target = getDatabase();
+  const updates = {};
 
   receipt[status] += 1;
+  updates['/receipts/' + id] = receipt;
 
   return new Promise((resolve, reject) => {
-    target.ref().update(receipt).then(() => {
-      writeReceiptEvaluation (id, status, evaluation);
+    target.ref().update(updates).then(() => {
+      writeReceiptEvaluation(id, status, evaluation);
     }).catch((err) => {
       reject(err);
     });

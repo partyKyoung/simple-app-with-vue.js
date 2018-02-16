@@ -1,6 +1,6 @@
 <template>
   <div>
-    총평: :)
+    총평: {{totalStatus}}
   <ul>
     <evaluation 
       v-for="evaluation of evaluationList" 
@@ -25,11 +25,13 @@
 
       getReceiptEvaluation(id).then((data) => {
         data.forEach((item) => {
-        let evaluation = item.val();
+          let great = 0;
+          let stupid =0;
+          let evaluation = item.val();
 
-        evaluation.key = item.key;
+          evaluation.key = item.key;
 
-        this.evaluationList.push(evaluation);    
+          this.evaluationList.push(evaluation);    
         });
       }).catch((err) => {
         console.error(err);
@@ -37,7 +39,8 @@
     },
     data () {
       return {
-        evaluationList: []
+        evaluationList: [],
+        totalStatus: '그뤠잇? 스튜핏?',
       }
     }
   }

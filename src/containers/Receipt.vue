@@ -3,11 +3,11 @@
     <h3 class="text-center">영수증</h3>
     <div class="row m-0 mt-3 mb-3">
       <h4 class="col-12 col-md-3 mb-3">지출 내역</h4>
-      <div class="col-12 col-md-9 mb-3">{{receipt.spendingDetail}}</div>
+      <div class="col-12 col-md-9 mb-3">{{receipt ? receipt.spendingDetail : ''}}</div>
       <h4 class="col-12 col-md-3 mb-3">금액</h4>
-      <div class="col-12 col-md-9 mb-3">{{receipt.price}}</div>
+      <div class="col-12 col-md-9 mb-3">{{receipt ? receipt.price : ''}}</div>
       <h4 class="col-12 col-md-3">설명</h4>
-      <div class="col-12 col-md-9">{{receipt.description}}</div>
+      <div class="col-12 col-md-9">{{receipt ? receipt.description : ''}}</div>
     </div>
     <div>
       <button @click="toggleForm()">평가 남기기</button>
@@ -38,6 +38,7 @@
     },
     created () {
       getReceipt(this.$route.params.id).then((data) => {
+        console.log(data.val());
         this.receipt = data.val();
 
       }).catch((err) => {
