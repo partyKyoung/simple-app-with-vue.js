@@ -33,7 +33,7 @@ export function writeReceipt (spendingDetail, price, description) {
     price: price,
     description: description,
     great: 0,
-    stupit: 0
+    stupid: 0
   };
 
   // 입력할 데이터의 key를 얻는다. 
@@ -50,21 +50,37 @@ export function writeReceipt (spendingDetail, price, description) {
   })
 }
 
-export function updateReceipt (id, status, evaluation) {
+export function updateReceipt (key, status, evaluation, receipt) {
+  const target = getDatabase();
+
+  receipt[status] += 1;
+
+  return new Promise((resolve, reject) => {
+    target.ref().update(receipt).then(() => {
+      writeReceiptEvaluation (key, status, evaluation);
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+
+
+}
+
+export function writeReceiptEvaluation (key, status, evaluation) {
   const target = getDatabase();
   const postData = {
-    id: id,
+    key: key,
     status: status,
     evaluation: evaluation
   }
 
-  const key = target.ref().child('receiptsEvaluation').push().key;
+  const evaluationKey = target.ref().child('receiptsEvaluation').push().key;
   const updates = {};
-  updates['/receiptsEvaluation/' + key] = postData;
+  updates['/receiptsEvaluation/' + evaluationKey] = postData;
 
   return new Promise((resolve, reject) => {
     target.ref().update(updates).then(() => {
-      resolve(key);
+      resolve(evaluationKey);
     }).catch((err) =>  {
       reject(err);
     })
@@ -75,7 +91,7 @@ export function getReceiptEvaluation (key) {
   const target = getDatabase();
 
   return new Promise((resolve, reject) => {
-    target.ref('/receiptsEvaluation').orderByChild("id").equalTo(key).once("value").then((snapshot) => {
+    target.ref('/receiptsEvaluation').orderByChild("key").equalTo(key).once("value").then((snapshot) => {
       resolve(snapshot);
     }).catch((err) => {
       reject(err);
