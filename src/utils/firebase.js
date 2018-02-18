@@ -58,8 +58,8 @@ export function updateReceipt (id, status, evaluation, receipt) {
   updates['/receipts/' + id] = receipt;
 
   return new Promise((resolve, reject) => {
-    target.ref().update(updates).then(() => {
-      writeReceiptEvaluation(id, status, evaluation);
+    target.ref().update(updates).then((data) => {
+      resolve(data);
     }).catch((err) => {
       reject(err);
     });
@@ -81,8 +81,8 @@ export function writeReceiptEvaluation (id, status, evaluation) {
   updates['/receiptsEvaluation/' + evaluationKey] = postData;
 
   return new Promise((resolve, reject) => {
-    target.ref().update(updates).then(() => {
-      resolve(evaluationKey);
+    target.ref().update(updates).then((data) => {
+      resolve(data);
     }).catch((err) =>  {
       reject(err);
     })

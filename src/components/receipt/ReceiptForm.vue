@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import { updateReceipt } from '../../utils/firebase';
+  import { updateReceipt, writeReceiptEvaluation } from '../../utils/firebase';
   
   export default {
     name: 'receipt-form',
@@ -38,13 +38,18 @@
         const evaluation = this.evaluation;
         const receipt = this.receipt;
 
-        updateReceipt(id, status, evaluation, receipt).then(() => {
-          alert('등록 되었습니다.');
+        Promise.all(
+          [
+            updateReceipt(id, status, evaluation, receipt), 
+            writeReceiptEvaluation(id, status, evaluation)
+          ]
+        ).then((data) => { 
+          alert("등록 되었습니다.");
 
         }).catch((err) => {
-        alert('등록에 실패하였습니다. 잠시 후 다시 시도해주세요.');
+          alert('등록에 실패하였습니다. 잠시 후 다시 시도해주세요.');
 
-        console.error(err)          
+          console.error(err);
         });
       }
     },
