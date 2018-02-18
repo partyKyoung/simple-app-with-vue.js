@@ -1,16 +1,15 @@
 <template>
-  <div class="receipt">
-    <h3 class="text-center">영수증</h3>
+  <div class="receipt ml-auto mr-auto">
     <div class="row m-0 mt-3 mb-3">
-      <h4 class="col-12 col-md-3 mb-3">지출 내역</h4>
-      <div class="col-12 col-md-9 mb-3">{{receipt ? receipt.spendingDetail : ''}}</div>
-      <h4 class="col-12 col-md-3 mb-3">금액</h4>
-      <div class="col-12 col-md-9 mb-3">{{receipt ? receipt.price : ''}}</div>
-      <h4 class="col-12 col-md-3">설명</h4>
-      <div class="col-12 col-md-9">{{receipt ? receipt.description : ''}}</div>
+      <h3 class="col-3 col-md-2 p-0 mb-3 font-weight-bold text-right">지출 내역</h3>
+      <div class="col-9 col-md-10 p-0 mb-3">{{receipt ? receipt.spendingDetail : ''}}</div>
+      <h3 class="col-3 col-md-2 p-0 mb-3 font-weight-bold text-right">금액</h3>
+      <div class="col-9 col-md-10 p-0 mb-3">{{receipt ? receipt.price : ''}}</div>
+      <h3 class="col-3 col-md-2 p-0 font-weight-bold text-right">설명</h3>
+      <div class="col-9 col-md-10 p-0 ">{{receipt ? receipt.description : ''}}</div>
     </div>
-    <div>
-      <button @click="toggleForm()">평가 남기기</button>
+    <div class="mt-3 mb-3">
+      <button class="btn btn-primary" @click="toggleForm()">평가 남기기</button>
       <receipt-form 
         v-if="isShowForm"
         :id="id"

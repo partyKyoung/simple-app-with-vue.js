@@ -1,9 +1,23 @@
 <template>
   <div>
-    <input type="radio" value="great" v-model="status"/>
-    <label for="great">그뤠잇</label>
-    <input type="radio" value="stupid" v-model="status"/>
-    <label for="stupid">스튜핏</label>
+    <div class="clearfix">
+      <div class="input-group float-left w-50">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+          <input type="radio" v-model="status" v-bind:value="'great'"/>
+          </div>
+        </div>
+        <label for="great" class="form-control">그뤠잇</label>
+      </div>    
+      <div class="input-group float-left w-50">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+          <input type="radio" v-model="status" v-bind:value="'stupid'"/>
+          </div>
+        </div>
+        <label for="stupid" class="form-control">스튜핏</label>
+      </div>   
+    </div>     
     <div class="mt-3 mb-3">
       <textarea v-model="evaluation"/>
     </div>
@@ -36,7 +50,7 @@
     },
     data () {
       return {
-        status: '',
+        status: 'great',
         evaluation: ''
       }
     }

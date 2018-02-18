@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form id="receiptForm" class="w-100 w-md-75 mx-auto">
+    <form id="receiptForm" class="ml-auto mr-auto">
       <div class="form-group row">
         <label class="col-3 col-form-label text-md-right pl-0 pr-0 pr-md-4">지출 내역</label>
         <div class="col-6 px-0 pl-1 p-md-0">
