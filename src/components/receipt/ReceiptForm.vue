@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-3">
     <div class="clearfix">
       <div class="input-group float-left w-50">
         <div class="input-group-prepend">
@@ -18,10 +18,16 @@
         <label for="stupid" class="form-control">스튜핏</label>
       </div>   
     </div>     
-    <div class="mt-3 mb-3">
-      <textarea v-model="evaluation"/>
-    </div>
-    <button @click="sendPost()">입력하기</button>
+    <div class="form-group row ml-0 mr-0 mt-3 mb-3">
+      <label class="col-3 col-form-label text-md-right pl-0 pr-0 pr-md-4">평가</label>
+      <div class="col-9 px-0 pl-1 p-md-0">
+        <textarea 
+          class="form-control w-100"
+          v-model="evaluation"
+        />
+      </div>  
+    </div> 
+    <button class="btn btn-primary" @click="sendPost()">입력하기</button>
   </div>
 </template>
 
@@ -38,13 +44,13 @@
         const evaluation = this.evaluation;
         const receipt = this.receipt;
 
-        Promise.all(
-          [
-            updateReceipt(id, status, evaluation, receipt), 
-            writeReceiptEvaluation(id, status, evaluation)
-          ]
-        ).then((data) => { 
+        Promise.all([
+          updateReceipt(id, status, evaluation, receipt), 
+          writeReceiptEvaluation(id, status, evaluation)
+        ]).then((data) => { 
           alert("등록 되었습니다.");
+
+          this.$parent.$refs.receiptEvaluation.getReceiptEvaluations();
 
         }).catch((err) => {
           alert('등록에 실패하였습니다. 잠시 후 다시 시도해주세요.');
