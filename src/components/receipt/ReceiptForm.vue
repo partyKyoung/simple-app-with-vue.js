@@ -19,8 +19,8 @@
       </div>   
     </div>     
     <div class="form-group row ml-0 mr-0 mt-3 mb-3">
-      <label class="col-3 col-form-label text-md-right pl-0 pr-0 pr-md-4">평가</label>
-      <div class="col-9 px-0 pl-1 p-md-0">
+      <label class="col-2 col-form-label text-md-right pl-0 pr-0 pr-md-4">평가</label>
+      <div class="col-10 px-0 pl-1 p-md-0">
         <textarea 
           class="form-control w-100"
           v-model="evaluation"

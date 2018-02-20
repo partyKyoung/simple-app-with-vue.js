@@ -1,42 +1,39 @@
 <template>
   <div>
     <form id="receiptForm" class="ml-auto mr-auto">
-      <div class="form-group row m-0">
-        <label class="col-3 col-form-label text-md-right pl-0 pr-0 pr-md-4">지출 내역</label>
-        <div class="col-9 px-0 pl-1 p-md-0">
+      <div class="form-group row m-0 mb-3">
+        <label class="col-3 col-form-label font-weight-bold text-right p-0">지출 내역<span class="text-danger">*</span></label>
+        <div class="col-9 pl-3 pr-0">
           <input 
             class='form-control'
             placeholder="지출 내역"
             type="text"
             v-model="spendingDetail"
           />
-          <div class="invalid-feedback text-danger" >오류 텍스트</div>
         </div>  
       </div>
-      <div class="form-group row m-0">
-        <label class="col-3 col-form-label text-md-right pl-0 pr-0 pr-md-4">금액</label>
-        <div class="col-9 px-0 pl-1 p-md-0">
+      <div class="form-group row m-0 mb-3">
+        <label class="col-3 col-form-label font-weight-bold text-right p-0">금액<span class="text-danger">*</span></label>
+        <div class="col-9 pl-3 pr-0">
           <input 
             class='form-control'
             placeholder="금액"
             type="number"
             v-model="price"
           />
-          <div class="invalid-feedback text-danger">오류 텍스트</div>
         </div>  
       </div>
-      <div class="form-group row m-0">
-        <label class="col-3 col-form-label text-md-right pl-0 pr-0 pr-md-4">설명</label>
-        <div class="col-9 px-0 pl-1 p-md-0">
+      <div class="form-group row m-0 mb-3">
+        <label class="col-3 col-form-label font-weight-bold text-right p-0">설명</label>
+        <div class="col-9 pl-3 pr-0">
           <textarea 
             class="form-control"
             v-model="description"
           />
-          <div class="invalid-feedback text-danger">오류 텍스트</div>
         </div>  
       </div>           
     </form>
-    <button type="button" @click="sendPost()">영수증 제출</button>
+    <button type="button" class="btn btn-primary" @click="sendPost()">영수증 제출</button>
   </div>
 </template>
 
@@ -49,6 +46,12 @@ export default {
       const spendingDetail = this.spendingDetail;
       const price = this.price;
       const description = this.description;
+
+      if (!spendingDetail || !price) {
+        alert('필수 항목을 입력해주세요.');
+
+        return;
+      }
 
       writeReceipt(spendingDetail, price, description).then((key) => {
         alert('등록되었습니다.');
