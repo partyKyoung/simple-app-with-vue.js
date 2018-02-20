@@ -1,13 +1,20 @@
 <template>
   <li @click="moveReceipt(receipt.id)" class="receipt-item col-12 col-md-12 mb-3 rounded">
     <div class="receipt-item-content text-left p-3">
-      <p class="mb-3"><span class="d-inline-block font-weight-bold receipt-item-title">지출 내역</span>{{receipt.spendingDetail}}</p>
-      <p><span class="d-inline-block font-weight-bold receipt-item-title">가격</span>{{receipt.price}}원</p>
+      <div class="mb-3">
+        <span class="d-inline-block font-weight-bold receipt-item-title text-right pr-3">지출 내역</span>
+        <span>{{receipt.spendingDetail}}</span>
+      </div>
+      <div>
+        <span class="d-inline-block font-weight-bold receipt-item-title text-right pr-3">가격</span>
+        <span>{{getNumberWidthCommas(receipt.price)}}원</span>
+      </div>
     </div>
   </li>
 </template>
 
 <script>
+  import {numberWithCommas} from '../../utils/number';
   export default {
     name: 'receipt-thumbnail',
     props: ['receipt'],
@@ -15,6 +22,9 @@
     methods: {
       moveReceipt (id) {
         this.$router.push({ path: `receipt/${id}`})
+      },
+      getNumberWidthCommas (price) {
+        return numberWithCommas(price);
       }
     }
   }
