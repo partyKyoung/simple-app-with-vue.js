@@ -50,6 +50,7 @@
         ]).then((data) => { 
           alert("등록 되었습니다.");
 
+          this.evaluation = '';
           this.$parent.$refs.receiptEvaluation.getReceiptEvaluations();
 
         }).catch((err) => {

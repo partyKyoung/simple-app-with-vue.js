@@ -1,5 +1,5 @@
 <template>
-  <li class="evaluation text-left position-relative mt-3 p-3" v-bind:class="{
+  <li class="evaluation text-left position-relative mb-3 p-3" v-bind:class="{
     great: evaluation.status === 'great',
     'text-primary': evaluation.status === 'great',
     stupid: evaluation.status === 'stupid',

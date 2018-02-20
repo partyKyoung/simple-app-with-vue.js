@@ -1,13 +1,13 @@
 <template>
   <li @click="moveReceipt(receipt.id)" class="receipt-item col-12 col-md-12 mb-3 rounded">
     <div class="receipt-item-content text-left p-3">
-      <div class="mb-3">
-        <span class="d-inline-block font-weight-bold receipt-item-title text-right pr-3">지출 내역</span>
-        <span>{{receipt.spendingDetail}}</span>
+      <div class="mb-3 d-flex">
+        <span class="receipt-item-title d-inline-block font-weight-bold text-right pr-3">지출 내역</span>
+        <p className="float-left">{{receipt.spendingDetail}}</p>
       </div>
-      <div>
-        <span class="d-inline-block font-weight-bold receipt-item-title text-right pr-3">가격</span>
-        <span>{{getNumberWidthCommas(receipt.price)}}원</span>
+      <div class="d-flex">
+        <span class="receipt-item-title d-inline-block font-weight-bold text-right pr-3">가격</span>
+        <p className="float-left">{{getNumberWidthCommas(receipt.price)}}원</p>
       </div>
     </div>
   </li>
@@ -36,6 +36,13 @@
     background-color: #FFF;
     height: 80px;
     padding-right: 16px;
+
+    p {
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      word-wrap:normal;
+      overflow:hidden;          
+    }
   }
 
   .receipt-item {

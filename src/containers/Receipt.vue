@@ -6,7 +6,7 @@
       <h3 class="col-3 col-md-2 pl-0 pr-3  mb-3 font-weight-bold text-right">금액</h3>
       <div class="col-9 col-md-10 p-0 mb-3 text-left">{{receipt ? receipt.price : ''}}원</div>
       <h3 class="col-3 col-md-2 pl-0 pr-3 font-weight-bold text-right">설명</h3>
-      <div class="col-9 col-md-10 p-0 text-left">{{receipt ? receipt.description : ''}}</div>
+      <div class="receipt-description col-9 col-md-10 p-0 text-left">{{receipt ? receipt.description : ''}}</div>
     </div>
     <div class="mt-3 mb-3">
       <button class="btn btn-primary" @click="toggleForm()">{{isShowForm ? '접기' : '평가 남기기'}}</button>
@@ -60,11 +60,15 @@
 </script>
 
 <style scoped lang='scss'>
-.receipt {
-  width: 100%;
+  .receipt {
+    width: 100%;
 
-  @media screen and (min-width: 768px) {
-    width: 75%;
+    @media screen and (min-width: 768px) {
+      width: 75%;
+    }
   }
-}
+
+  .receipt-description  {
+    line-height: 25px;
+  }
 </style>
