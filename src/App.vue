@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <receipt-header></receipt-header>
+    <app-header></app-header>
     <section class="container pt-3">
       <router-view/>
     </section>
@@ -11,7 +11,7 @@
 import Header from './components/layout/Header.vue'
 
 export default {
-  components: {'receipt-header': Header},
+  components: {'app-header': Header},
   name: 'App'
 }
 </script>

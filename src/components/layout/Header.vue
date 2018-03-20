@@ -1,14 +1,14 @@
 <template>
   <header class="header">
     <router-link to="/">
-      <h1>고독한 김생민 in WEB</h1>
+      <h1>Vue Project</h1>
     </router-link>
   </header>
 </template>
 
 <script>
   export default {
-    name: 'receipt-header'
+    name: 'app-header'
   }
 </script>
 

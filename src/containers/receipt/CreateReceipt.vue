@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import {writeReceipt} from '../utils/firebase'
+import {writeReceipt} from '../../utils/firebase'
 
 export default {
   methods: {

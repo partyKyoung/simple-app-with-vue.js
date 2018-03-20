@@ -26,9 +26,9 @@
 </template>
 
 <script>
-  import ReceiptForm from '../components/receipt/ReceiptForm';
-  import ReceiptEvaluation from '../components/receipt/ReceiptEvaluation';
-  import {getReceipt} from '../utils/firebase'
+  import ReceiptForm from '../../components/receipt/ReceiptForm';
+  import ReceiptEvaluation from '../../components/receipt/ReceiptEvaluation';
+  import {getReceipt} from '../../utils/firebase'
 
   export default {
     name: 'receipt',
