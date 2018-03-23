@@ -4,7 +4,7 @@ import Home from '@/containers/Home'
 import ReceiptHome from '@/containers/receipt/ReceiptHome'
 import CreateReceipt from '@/containers/receipt/CreateReceipt'
 import Receipt from '@/containers/receipt/Receipt'
-import LolHome from '@/containers/lol/LolHome'
+import GameHome from '@/containers/game/GameHome'
 
 Vue.use(Router)
 
@@ -26,8 +26,8 @@ export default new Router({
       path: '/receipt/:id',
       component: Receipt
     }, {
-      path: '/lol',
-      component: LolHome
+      path: '/game',
+      component: GameHome
     }
   ]
 })
