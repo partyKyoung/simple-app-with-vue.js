@@ -16,7 +16,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -49,7 +49,9 @@ export default {
   }
 
   ol, ul {
-    list-style: none;
+  li {
+      list-style: none;
+    }
   }
 
   blockquote, q {

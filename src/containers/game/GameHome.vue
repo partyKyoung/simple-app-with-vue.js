@@ -2,27 +2,26 @@
   <div>
     <div class="game-home">
       <h2>게임 정발 현황</h2>
-      <div className="mt-3 mb-3">
+      <div class="mt-3 mb-3">
         <input 
           class='form-control'
-          placeholder="게임 제목 입력"
+          placeholder="게임 제목 입력 후 Enter"
           type="text"
           v-model="gameTitle"
+          @keydown="getGameData"
         />          
       </div>
-    </div>
-    <div class="text-center">
-      <button type="button" @click="getGameData()" className="btn btn-primary">비교하기</button>
-    </div>    
-    <div>
-      
-    </div>
+      <game-list :gameList="gameList"></game-list>
+    </div>      
   </div>
 </template>
 
 <script>
-  import { getGame  } from '../../utils/gameApi';
+  import GameList from '../../components/game/GameList.vue'
+  import { getGame } from '../../utils/gameApi';
   
+  const ENTER = 13;
+
   function combinedGameList (gameList) {
     let jsonGameList = [];
     
@@ -33,6 +32,7 @@
     for (let game of gameList) {
       jsonGameList.push({
         gameTitle: game.children ? game.children[0].innerHTML : '',
+        givenrate: game.children ? game.children[4].innerHTML : '', 
         ratedDate: game.children ? game.children[6].innerHTML : '',
       })
     }
@@ -41,10 +41,16 @@
   }
 
   export default {
+    name: 'game-home',
+    components: {GameList},
     methods: {
-      getGameData () {
+      getGameData (event) {
+        if (!event.keyCode || event.keyCode !== ENTER) {
+          return;
+        }
+   
         getGame(this.gameTitle).then((data) => {
-          console.log(combinedGameList(data));
+          this.gameList = combinedGameList(data);
         }).catch();
       }
     },
