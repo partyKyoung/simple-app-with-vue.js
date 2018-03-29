@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="game-home">
-      <h2>게임 정발 현황</h2>
+      <h2>게임 등급분류 현황</h2>
       <div class="mt-3 mb-3">
         <input 
           class='form-control'

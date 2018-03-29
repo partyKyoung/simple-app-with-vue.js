@@ -1,10 +1,11 @@
-# SimpleReceipt
-vue.js 맛보기용으로 만든 web application. 
-컨셉은 카카오톡 고독한 김생민 방에서 따옴. 
+vue.js 공부 하면서 만든거 
 
-## front-end
 - vue.js
 - bootstrap
 
-## back-end
-- firebase
+목록
+- 고독한 김생민 in Web
+  - firebase
+- 게임 등급 분류 현황 
+  - axios
+  - 게임 등급 분류 api 
